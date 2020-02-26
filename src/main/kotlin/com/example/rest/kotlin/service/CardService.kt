@@ -10,12 +10,20 @@ import javax.xml.ws.http.HTTPException
 
 @Service
 class CardService {
-
+////        val resumoUm: Resumo = Resumo()
     @Autowired
     lateinit var cardRepository: CardRepository
 
     fun createCard(card:Card): Card {
         var createdCard: Card = this.cardRepository.save(card)
         return card;
+    }
+
+    fun findCard(cardId:Long): Card {
+        var card: Optional<Card> = this.cardRepository.findById(cardId)
+        if(!card.isPresent()){
+            throw Exception("Card not found.")
+        }
+        return card.get();
     }
 }
