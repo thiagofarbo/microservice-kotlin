@@ -1,7 +1,7 @@
-package com.example.rest.kotlin.resources
+package com.example.rest.card.resources
 
-import com.example.rest.kotlin.domain.Card
-import com.example.rest.kotlin.service.CardService
+import com.example.rest.card.domain.Card
+import com.example.rest.card.service.CardService
 import io.swagger.annotations.Api
 import io.swagger.annotations.ApiOperation
 import io.swagger.annotations.ApiResponse

@@ -1,4 +1,4 @@
-package com.example.rest.kotlin
+package com.example.rest.card
 
 import org.junit.jupiter.api.Test
 import org.springframework.boot.test.context.SpringBootTest

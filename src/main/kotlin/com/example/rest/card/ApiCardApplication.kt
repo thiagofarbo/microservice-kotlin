@@ -1,10 +1,10 @@
-package com.example.rest.kotlin
+package com.example.rest.card
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
 
 @SpringBootApplication
-class ApiCardApplication
+open class ApiCardApplication
 
 fun main(args: Array<String>) {
 	runApplication<ApiCardApplication>(*args)
