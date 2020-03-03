@@ -12,7 +12,7 @@ import java.util.*
 
 @Service
 open class CardService {
-////        val resumoUm: Resumo = Resumo()
+
     @Autowired
     lateinit var cardRepository: CardRepository
 
@@ -35,6 +35,20 @@ open class CardService {
             throw Exception("Card not found.")
         }
         return cards;
+    }
+
+    open fun updateCartd(cardId:Long, cardRequest: CardRequest): CardResponse {
+        var card: Optional<Card> = this.cardRepository.findById(cardId!!)
+
+        if(!card.isPresent()){
+            throw Exception("Card not found.")
+        }
+
+        val cardUpdate: Card = Card(card.get().id, cardRequest.name, cardRequest.amout, cardRequest.expirationDate, cardRequest.status)
+        var cardSaved: Card = this.cardRepository.save(cardUpdate)
+
+        return CardResponse(cardSaved.id, cardSaved.name, cardSaved.amout, cardSaved.expirationDate, cardSaved.status)
+
     }
 
     open fun deleteCartd(cardId:Long): String {

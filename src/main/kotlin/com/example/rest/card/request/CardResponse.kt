@@ -16,12 +16,11 @@ import java.io.Serializable
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-class CardResponse(
+data class CardResponse(
 
         val id: Long,
-        val name: String,
+        var name: String,
         val amout: BigDecimal,
-
         @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy/MM/dd")
         @JsonSerialize(using = LocalDateSerializer::class)
         @JsonDeserialize(using = LocalDateDeserializer::class)

@@ -13,6 +13,7 @@ import org.springframework.data.domain.Page
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
+import javax.validation.Valid
 
 @RestController
 @RequestMapping("/api")
@@ -33,7 +34,7 @@ class CardResource {
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/cards")
     @ApiOperation(value = "Create a card ", response = CardResource::class)
-    open fun create(@RequestBody card: Card): ResponseEntity<Card> {
+    open fun create(@Valid @RequestBody card: Card): ResponseEntity<Card> {
         return ResponseEntity.ok(this.service.createCard(card));
      }
 
@@ -56,5 +57,12 @@ class CardResource {
     @ApiOperation(value = "Delete a card by card id ", response = CardResource::class)
     open fun delete(@PathVariable("cardId") cardId: Long): ResponseEntity<String> {
         return ResponseEntity.ok(this.service.deleteCartd(cardId));
+    }
+
+    @ResponseStatus(HttpStatus.OK)
+    @PutMapping("/cards/{cardId}")
+    @ApiOperation(value = "Update a card ", response = CardResource::class)
+    open fun update(@PathVariable("cardId") cardId: Long, @Valid @RequestBody cardRequest: CardRequest): ResponseEntity<CardResponse> {
+        return ResponseEntity.ok(this.service.updateCartd(cardId, cardRequest));
     }
 }
