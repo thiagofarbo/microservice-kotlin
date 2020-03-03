@@ -1,29 +1,31 @@
-package com.example.rest.card.domain
-
+package com.example.rest.card.request
+import com.example.rest.card.domain.StatusCard
 import com.fasterxml.jackson.annotation.JsonFormat
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize
 import com.fasterxml.jackson.databind.annotation.JsonSerialize
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer
 import lombok.AllArgsConstructor
+import lombok.Builder
 import lombok.NoArgsConstructor
+import java.io.Serializable
 import java.math.BigDecimal
 import java.time.LocalDate
-import javax.persistence.*
 
-@Entity
-@Table(name="card")
-@AllArgsConstructor
+@Builder
 @NoArgsConstructor
-class Card (
-        @Id
-        @GeneratedValue(strategy = GenerationType.AUTO)
-        var id: Long,
-        var name: String,
-        var amout: BigDecimal,
+@AllArgsConstructor
+open class CardRequest (
+        val id: Long,
+        val name: String,
+        val amout: BigDecimal,
+
         @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy/MM/dd")
         @JsonSerialize(using = LocalDateSerializer::class)
         @JsonDeserialize(using = LocalDateDeserializer::class)
-        var expirationDate: LocalDate,
-        var status:StatusCard
-)
+        val expirationDate: LocalDate,
+        val status: StatusCard
+): Serializable{
+
+
+}
