@@ -59,5 +59,4 @@ open class CardService {
         this.cardRepository.deleteById(cardId);
         return "Card deleted";
     }
-
 }
