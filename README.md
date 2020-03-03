@@ -8,20 +8,20 @@
 > By default the SpringBoot run on port 8080 so make sure you do not have any server running on port 8080. Go to root folder of your application and type on your terminal the command mvn spring-boot:run
 
 #How to execute requests of API RESTful 
->POST: to create a card: http://localhost:8080/api/cards 
-JSON { 
+- POST: to create a card: http://localhost:8080/api/cards 
+> JSON { 
 	"name": "John Summer",
 	"amout": 2.000,
 	"expirationDate": "2020/02/05",
 	"status": "ACTIVE"
-}
-GET: List cards: http://localhost:8083/api/cards
-GET: Get a card by id: http://localhost:8083/api/cards/31
-PUT: Update a card by id: http://localhost:8083/api/cards/31
-JSON { 
+> }
+- GET: List cards: http://localhost:8083/api/cards
+- GET: Get a card by id: http://localhost:8083/api/cards/31
+- PUT: Update a card by id: http://localhost:8083/api/cards/31
+> JSON { 
 	"name": "John Summer",
 	"amout": 2.000,
 	"expirationDate": "2020/02/05",
 	"status": "ACTIVE"
-}
-DELETE: Delete card: http://localhost:8083/api/cards/35
+> }
+- DELETE: Delete card: http://localhost:8083/api/cards/35
