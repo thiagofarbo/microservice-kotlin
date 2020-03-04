@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.data.domain.Page
 import org.springframework.data.domain.PageRequest
 import org.springframework.stereotype.Service
-import org.springframework.util.CollectionUtils
 import java.util.*
 
 @Service
@@ -18,13 +17,12 @@ open class CardService {
     lateinit var cardRepository: CardRepository
 
     open fun createCard(card:Card): Card {
-        val createdCard: Card = this.cardRepository.save(card)
-        return card;
+        return this.cardRepository.save(card);
     }
 
     open fun findCard(cardId:Long): Card {
         val card: Optional<Card> = this.cardRepository.findById(cardId)
-        if(!card.isPresent()){
+        if(!card.isPresent){
             throw Exception("Card not found.")
         }
         return card.get();
