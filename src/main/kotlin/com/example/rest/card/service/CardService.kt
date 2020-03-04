@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.data.domain.Page
 import org.springframework.data.domain.PageRequest
 import org.springframework.stereotype.Service
+import org.springframework.util.CollectionUtils
 import java.util.*
 
 @Service
@@ -17,12 +18,12 @@ open class CardService {
     lateinit var cardRepository: CardRepository
 
     open fun createCard(card:Card): Card {
-        var createdCard: Card = this.cardRepository.save(card)
+        val createdCard: Card = this.cardRepository.save(card)
         return card;
     }
 
     open fun findCard(cardId:Long): Card {
-        var card: Optional<Card> = this.cardRepository.findById(cardId)
+        val card: Optional<Card> = this.cardRepository.findById(cardId)
         if(!card.isPresent()){
             throw Exception("Card not found.")
         }
@@ -30,15 +31,15 @@ open class CardService {
     }
 
     open fun listCards(page: Int, size: Int): Page<Card> {
-        var cards = this.cardRepository.findAll(PageRequest.of(page, size))
-        if(cards.isEmpty()){
-            throw Exception("Card not found.")
+        val cards: Page<Card> = this.cardRepository.findAll(PageRequest.of(page, size))
+        if(cards.isEmpty){
+            throw Exception("Cards not found.")
         }
         return cards;
     }
 
     open fun updateCartd(cardId:Long, cardRequest: CardRequest): CardResponse {
-        var card: Optional<Card> = this.cardRepository.findById(cardId!!)
+        val card: Optional<Card> = this.cardRepository.findById(cardId!!)
 
         if(!card.isPresent()){
             throw Exception("Card not found.")

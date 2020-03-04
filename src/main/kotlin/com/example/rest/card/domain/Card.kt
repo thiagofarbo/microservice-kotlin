@@ -15,15 +15,15 @@ import javax.persistence.*
 @Table(name="card")
 @AllArgsConstructor
 @NoArgsConstructor
-class Card (
+data class Card (
         @Id
         @GeneratedValue(strategy = GenerationType.AUTO)
-        var id: Long,
-        var name: String,
-        var amout: BigDecimal,
+        val id: Long,
+        val name: String,
+        val amout: BigDecimal,
         @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy/MM/dd")
         @JsonSerialize(using = LocalDateSerializer::class)
         @JsonDeserialize(using = LocalDateDeserializer::class)
-        var expirationDate: LocalDate,
-        var status:StatusCard
+        val expirationDate: LocalDate,
+        val status:StatusCard
 )

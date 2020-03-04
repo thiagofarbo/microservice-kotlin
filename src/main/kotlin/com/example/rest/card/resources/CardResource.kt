@@ -48,7 +48,7 @@ class CardResource {
     @ResponseStatus(HttpStatus.OK)
     @GetMapping("/cards")
     @ApiOperation(value = "List all cards", response = CardResource::class)
-    open fun listCards(@RequestParam(defaultValue = "0") page: Int, @RequestParam(defaultValue = "50") size: Int): ResponseEntity<Page<Card>> {
+    open fun listCards(@RequestParam(defaultValue = "0") page: Int, @RequestParam(defaultValue = "10") size: Int): ResponseEntity<Page<Card>> {
         return ResponseEntity.ok(this.service.listCards(page, size));
     }
 

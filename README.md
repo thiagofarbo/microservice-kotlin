@@ -1,13 +1,16 @@
-#About this application. 
+# About this application. 
 > On this application was used Maven to manage the dependencies of the project, Java 8 to build api restful services. This application does not need to install any server to do run, the application is deployed in an embedded server (Tomcat).
 
-#How to access your database 
+# How to access your database 
 > To access your database, go to http://localhost:8080/h2
 
-#How to run the application 
+# How to run the application 
 > By default the SpringBoot run on port 8080 so make sure you do not have any server running on port 8080. Go to root folder of your application and type on your terminal the command mvn spring-boot:run
 
-#How to execute requests of API RESTful 
+# Access to Swagger 
+> http://localhost:8083/swagger-ui.html
+
+# How to execute requests of API RESTful 
 - POST: to create a card: http://localhost:8080/api/cards 
 > JSON { 
 	"name": "John Summer",
